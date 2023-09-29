@@ -2,19 +2,20 @@ import "../stylesheets/excerciseform.css"
 
 import React, { useReducer } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import formReducer, { initialState } from "../reducer/formReducer";
+import { initialState } from "../reducer/formReducer";
+import { useDispatch } from "react-redux";
+
 
 export default function ExcerciseForm (){
-
-
-    const [state, dispatch ] = useReducer(formReducer, initialState)
+   const dispatch = useDispatch()
     return(
         <div className='container'>
             <h1 className="header">Excercise Tracker</h1>
             <div className='form-container'>
-        <Formik initialValues={state.excerciseDetails} onSubmit={async (values) => {
+        <Formik initialValues={initialState.excerciseDetails} onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500));
-        console.log(JSON.stringify(values, null, 2));
+        dispatch({type: "ADD_TO_EXCERCISE_LIST", payload:values})
+        console.log(JSON.stringify(values));
       }}>
             <Form> 
              <div className='form-group'> 
