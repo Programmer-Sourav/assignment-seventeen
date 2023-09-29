@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 
 export default function ExcerciseList(){
 
-   const { excerciseState } =  useSelector((state)=>state.excerciseList)
+   const excerciseState =  useSelector((state)=>state.excerciseList)
     return(
         <div>{
             excerciseState.map((excercise)=>(
