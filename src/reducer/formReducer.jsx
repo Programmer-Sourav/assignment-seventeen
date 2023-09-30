@@ -30,12 +30,11 @@ const formReducer = (state = initialState, action) =>{
     case "GOAL_TRACKER_FORM_VALUE": 
     return {...state, goalDetails: {...state.goalDetails, [action.payload]: action.payload}}
     case "ADD_TO_EXCERCISE_LIST": 
-    //console.log(444, action.payload, [...state.excerciseList, action.payload])
-    return {...state, excerciseList: [...state.excerciseList, action.payload] }
-    case "ADD_TO_GOAL_LIST": 
-    return {...state, goalList: [...state.goalList, action.payload] }
+    return {...state, excerciseList: action.payload }
+    case "ADD_TO_GOALS_LIST": 
+    return {...state, goalsList:  action.payload }
     case "ADD_TO_FOOD_LIST": 
-    return {...state, foodList: [...state.foodList, action.payload] }
+    return {...state, foodList:  action.payload}
     default:
     return state
    }

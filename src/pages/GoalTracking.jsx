@@ -1,20 +1,21 @@
 import "../stylesheets/excerciseform.css"
 
-import React, { useReducer } from 'react';
+import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import formReducer, { initialState } from "../reducer/formReducer";
+import { addToGoals } from "../actionCreators/actions";
+import { useDispatch } from "react-redux";
 
 export default function GoalTracking (){
+  const dispatch = useDispatch()
 
-
-    const [state, dispatch ] = useReducer(formReducer, initialState)
     return(
         <div className='container'>
             <h1 className="header">Goal Tracker</h1>
             <div className='form-container'>
-        <Formik initialValues={state.goalDetails} onSubmit={async (values) => {
+        <Formik initialValues={initialState.goalDetails} onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500));
-        console.log(JSON.stringify(values, null, 2));
+        dispatch(addToGoals(values))
       }}>
             <Form> 
              <div className='form-group'> 

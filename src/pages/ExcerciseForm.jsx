@@ -1,9 +1,10 @@
 import "../stylesheets/excerciseform.css"
 
-import React, { useReducer } from 'react';
+import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { initialState } from "../reducer/formReducer";
 import { useDispatch } from "react-redux";
+import { addToExcercise } from "../actionCreators/actions";
 
 
 export default function ExcerciseForm (){
@@ -14,7 +15,7 @@ export default function ExcerciseForm (){
             <div className='form-container'>
         <Formik initialValues={initialState.excerciseDetails} onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500));
-        dispatch({type: "ADD_TO_EXCERCISE_LIST", payload:values})
+        dispatch(addToExcercise(values))
         console.log(JSON.stringify(values));
       }}>
             <Form> 
