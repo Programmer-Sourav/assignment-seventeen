@@ -1,3 +1,4 @@
+import { ADD_EXCERCISE_URL, ADD_FOOD_URL, ADD_GOAL_URL, FETCH_EXCERCISE_URL, FETCH_FOOD_URL, FETCH_GOAL_URL } from "../URLs";
 
 export const fetchGoalList = (goalsList) => ({
   type: "ADD_TO_GOALS_LIST",
@@ -19,7 +20,7 @@ export const fetchExcerciseList = (excerciseList) =>(
 export const addToExcercise = (excerciseDetails) =>async() =>{
 
   try{
-   const response = await fetch("https://assignment-seventeen-backend.developersourav.repl.co/addExcercise",{
+   const response = await fetch(ADD_EXCERCISE_URL,{
     method: "POST", 
     headers: {
       "Content-Type": "application/json", 
@@ -44,7 +45,7 @@ export const addToExcercise = (excerciseDetails) =>async() =>{
 
 export const addToFoods = (foodDetails) =>async() =>{
   try{
-   const response = await fetch("https://assignment-seventeen-backend.developersourav.repl.co/addFood", {
+   const response = await fetch(ADD_FOOD_URL, {
      method: "POST",
      headers: {
       "Content-Type": "application/json", 
@@ -65,9 +66,9 @@ export const addToFoods = (foodDetails) =>async() =>{
 
 }
 
-export const addToGoals = (goalDetails) =>async (dispatch) =>{
+export const addToGoals = (goalDetails) =>async () =>{
   try{
-  const response = await fetch("https://assignment-seventeen-backend.developersourav.repl.co/addGoal", {
+  const response = await fetch(ADD_GOAL_URL, {
     method: "POST", 
     headers: {
       "Content-Type": "application/json", 
@@ -91,7 +92,7 @@ export const addToGoals = (goalDetails) =>async (dispatch) =>{
 export const fetchExcercise = () =>async (dispatch)=>{
   try{
     const response = await fetch(
-        "https://assignment-seventeen-backend.developersourav.repl.co/fetchExcercise"
+        FETCH_EXCERCISE_URL
       );
       const receivedData = await response.json();
       const excerciseList = receivedData.excercise
@@ -105,7 +106,7 @@ export const fetchExcercise = () =>async (dispatch)=>{
 export const fetchGoals = () => async (dispatch) => {
   try {
     const response = await fetch(
-      "https://assignment-seventeen-backend.developersourav.repl.co/fetchGoals"
+      FETCH_GOAL_URL
     );
     const receivedData = await response.json();
     const goalsList = receivedData.goals;
@@ -117,7 +118,7 @@ export const fetchGoals = () => async (dispatch) => {
 
 export const fetchFoods = () => async (dispatch) =>{
   try{
-   const response = await fetch("https://assignment-seventeen-backend.developersourav.repl.co/fetchFoods")
+   const response = await fetch(FETCH_FOOD_URL)
    const receivedData = await response.json()
    const foodList = receivedData.foods;
    dispatch(fetchFoodList(foodList))
