@@ -3,18 +3,20 @@ import "../stylesheets/excerciseform.css"
 import React, { useReducer } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import formReducer, { initialState } from "../reducer/formReducer";
+import { useDispatch } from "react-redux";
+import { addToFoods } from "../actionCreators/actions";
 
 export default function FoodTracking (){
 
+   const dispatch = useDispatch()
 
-    const [state, dispatch ] = useReducer(formReducer, initialState)
     return(
         <div className='container'>
             <h1 className="header">Food Tracker</h1>
             <div className='form-container'>
-        <Formik initialValues={state.foodDetails} onSubmit={async (values) => {
+        <Formik initialValues={initialState.foodDetails} onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500));
-        console.log(JSON.stringify(values, null, 2));
+        dispatch(addToFoods(values))
       }}>
             <Form> 
              <div className='form-group'> 
