@@ -9,26 +9,20 @@ import ExcerciseList from './pages/ExcerciseList';
 import { Link } from 'react-router-dom';
 import FoodList from './pages/FoodList';
 import GoalList from './pages/GoalList';
+import Dashboard from './pages/Dashboard';
+import Trackers from './pages/Trackers';
+import NavigationBar from './components/NavigationBar';
 
 function App() {
   return (
     <div className="App">
-       {/* <ExcerciseForm/>
-       <GoalTracking/> */}
-       {/* <FoodTracking/> */}
-
-       <Link to="/excercise">Add Excercise</Link>
-       <Link to="/food"> Add Food</Link>
-       <Link to="/goal"> Add Goal</Link>
-
-
-       <Link to="/excerciselist">Tracked Excercise</Link>
-       <Link to="/foodslist"> Tracked Foods</Link>
-       <Link to="/goalslist"> Tracked Goals</Link>
+       <NavigationBar/>
        <Routes> 
+        <Route path='/' element={<Dashboard/>}/>
        <Route path='/excercise' element={<ExcerciseForm/>}></Route>
         <Route path='/food' element={<FoodTracking/>}></Route>
         <Route path='/goal' element={<GoalTracking/>}></Route>
+        <Route path='/tracker' element={<Trackers/>}/>
 
         <Route path='/excerciselist' element={<ExcerciseList/>}></Route>
         <Route path='/foodslist' element={<FoodList/>}></Route>

@@ -25,7 +25,7 @@ export default function GoalTracking (){
              </div> 
              <div className='form-group' >
              <label htmlFor='description' className="textleft">Description </label>  
-             <Field type='number' id='description' name='description' placeholder='Gain weight' />
+             <Field type='text' id='description' name='description' placeholder='Gain weight' />
              <ErrorMessage name="description" component="div" className='error'/>
              </div>
              <div className='form-group'>
