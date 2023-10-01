@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../stylesheets/navigation.css"
 
 
@@ -6,25 +7,25 @@ const NavigationBar = () => {
         <nav className="navbar">
         <ul className="nav-list">
           <li className="nav-item">
-            <a href="/">Dashboard</a>
+            <Link to="/">Dashboard</Link>
           </li>
           <li className="nav-item">
-            <a href="/excercise">Add Excercise</a>
+          <Link to="/excercise">Add Excercise</Link>
           </li>
           <li className="nav-item">
-            <a href="/food">Add Food</a>
+          <Link to="/food">Add Food</Link>
           </li>
           <li className="nav-item">
-            <a href="/goal">Add Goal</a>
+          <Link to="/goal">Add Goal</Link>
           </li>
           <li className="nav-item">
-            <a href="/excerciselist">Tracked Excercises</a>
+          <Link to="/excerciselist">Tracked Excercises</Link>
           </li>
           <li className="nav-item">
-            <a href="/foodslist">Tracked Foods</a>
+          <Link to="/foodslist">Tracked Foods</Link>
           </li>
           <li className="nav-item">
-            <a href="/goalslist">Tracked Goals</a>
+          <Link to="/goalslist">Tracked Goals</Link>
           </li>
         </ul>
       </nav>
