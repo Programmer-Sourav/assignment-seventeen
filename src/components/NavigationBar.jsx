@@ -19,7 +19,7 @@ const NavigationBar = () => {
           <Link to="/goal">Add Goal</Link>
           </li>
           <li className="nav-item">
-          <Link to="/excerciselist">Tracked Excercises</Link>
+            <Link to="/excerciseboard">Excercise</Link>
           </li>
           <li className="nav-item">
           <Link to="/foodslist">Tracked Foods</Link>

@@ -16,7 +16,8 @@ export const initialState = {
                 }      , 
     excerciseList: [], 
     foodList: [], 
-    goalsList: []                                 
+    goalsList: [], 
+    trackedExcercise: []                                 
 
 }
 
@@ -35,6 +36,8 @@ const formReducer = (state = initialState, action) =>{
     return {...state, goalsList:  action.payload }
     case "ADD_TO_FOOD_LIST": 
     return {...state, foodList:  action.payload}
+    case "ADD_TO_TRACKED_LIST": 
+    return {...state, trackedExcercise:  action.payload}
     case "DELETE_A_GOAL": 
     return {...state, goalsList: state.goalsList.filter((goal)=>goal._id!==action.payload)}
     case "DELETE_A_EXCERCISE": 

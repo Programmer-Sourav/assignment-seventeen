@@ -1,4 +1,4 @@
-import { ADD_EXCERCISE_URL, ADD_FOOD_URL, ADD_GOAL_URL, DELETE_EXCERCISE_URL, DELETE_FOOD_URL, DELETE_GOAL_URL, FETCH_EXCERCISE_URL, FETCH_FOOD_URL, FETCH_GOAL_URL } from "../URLs";
+import { ADD_EXCERCISE_URL, ADD_FOOD_URL, ADD_GOAL_URL, ADD_TO_TRACKED_EXCERCISE_URL, DELETE_EXCERCISE_URL, DELETE_FOOD_URL, DELETE_GOAL_URL, FETCH_ALL_EXCERCISE_URL, FETCH_EXCERCISE_URL, FETCH_FOOD_URL, FETCH_GOAL_URL, FETCH_TRACKED_EXCERCISE_URL } from "../URLs";
 
 export const fetchGoalList = (goalsList) => ({
   type: "ADD_TO_GOALS_LIST",
@@ -13,6 +13,13 @@ export const fetchFoodList = (foodList) =>({
 export const fetchExcerciseList = (excerciseList) =>(
   {
     type: "ADD_TO_EXCERCISE_LIST", 
+    payload: excerciseList
+  }
+)
+
+export const fetchTrakcedExcerciseList = (excerciseList) =>(
+  {
+    type: "ADD_TO_TRACKED_LIST", 
     payload: excerciseList
   }
 )
@@ -123,6 +130,35 @@ export const fetchExcercise = () =>async (dispatch)=>{
   }
 }
 
+
+export const fetchAllExcercises = () =>async (dispatch)=>{
+  try{
+    const response = await fetch(
+        FETCH_ALL_EXCERCISE_URL
+      );
+      const receivedData = await response.json();
+      const excerciseList = receivedData.excercise
+      dispatch(fetchExcerciseList(excerciseList))
+  }
+  catch(error){
+    console.error("Error", error)
+  }
+}
+
+export const fetchTrackedExcercises = () =>async (dispatch)=>{
+  try{
+    const response = await fetch(
+        FETCH_TRACKED_EXCERCISE_URL
+      );
+      const receivedData = await response.json();
+      const excerciseList = receivedData.excercise
+      dispatch(fetchTrakcedExcerciseList(excerciseList))
+  }
+  catch(error){
+    console.error("Error", error)
+  }
+}
+
 export const fetchGoals = () => async (dispatch) => {
   try {
     const response = await fetch(
@@ -216,6 +252,32 @@ export const deleteFoodFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
    if (response.ok) {
     const data = await response.json();
     const deletedGoal = data.deleted
+  } else {
+    console.error("Some Error occured!");
+  }
+   
+  }
+  catch(error){
+   console.error("Error ", error)
+  }
+
+}
+
+
+export const addToTrackedExcercise = (excerciseDetails) => async() =>{
+  try{
+   const response = await fetch(ADD_TO_TRACKED_EXCERCISE_URL,{
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json", 
+    },
+    body: JSON.stringify(excerciseDetails),
+   })
+
+   if (response.ok) {
+    const data = await response.json();
+    console.log("Added Excercise ", data)
+    const addedExcercise = data.added
   } else {
     console.error("Some Error occured!");
   }
