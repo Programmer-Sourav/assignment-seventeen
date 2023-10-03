@@ -12,8 +12,7 @@ export default function ExcerciseList(){
    useEffect(()=>{
     dispatch(fetchAllExcercises())
    }, [])
-   const totalCaloriesBurned = excerciseState.reduce((acc, excerciseItem)=>(acc+excerciseItem.caloriesBurned), 0)
-   localStorage.setItem("caloriesBurned", totalCaloriesBurned)
+
    
    const excerciseCategory = excerciseState.reduce((acc, currentItem) => (
      !acc.includes(currentItem.categoryInfo.category.excerciseCategory)

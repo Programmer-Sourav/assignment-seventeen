@@ -1,4 +1,4 @@
-import { ADD_EXCERCISE_URL, ADD_FOOD_URL, ADD_GOAL_URL, ADD_TO_TRACKED_EXCERCISE_URL, DELETE_EXCERCISE_URL, DELETE_FOOD_URL, DELETE_GOAL_URL, FETCH_ALL_EXCERCISE_URL, FETCH_EXCERCISE_URL, FETCH_FOOD_URL, FETCH_GOAL_URL, FETCH_TRACKED_EXCERCISE_URL } from "../URLs";
+import { ADD_EXCERCISE_URL, ADD_FOOD_URL, ADD_GOAL_URL, ADD_TO_TRACKED_EXCERCISE_URL, DELETE_EXCERCISE_URL, DELETE_FOOD_URL, DELETE_GOAL_URL, DELETE_TRACKED_EXCERCISE_URL, FETCH_ALL_EXCERCISE_URL, FETCH_EXCERCISE_URL, FETCH_FOOD_URL, FETCH_GOAL_URL, FETCH_TRACKED_EXCERCISE_URL } from "../URLs";
 
 export const fetchGoalList = (goalsList) => ({
   type: "ADD_TO_GOALS_LIST",
@@ -17,7 +17,7 @@ export const fetchExcerciseList = (excerciseList) =>(
   }
 )
 
-export const fetchTrakcedExcerciseList = (excerciseList) =>(
+export const fetchTrackedExcerciseList = (excerciseList) =>(
   {
     type: "ADD_TO_TRACKED_LIST", 
     payload: excerciseList
@@ -34,6 +34,14 @@ export const deleteAGoal = (idToBeDeleted) =>(
 export const deleteAnExcercise = (idToBeDeleted) =>(
   {
    type: "DELETE_A_EXCERCISE",
+   payload: idToBeDeleted
+  }
+)
+
+
+export const deleteATrackedExcercise = (idToBeDeleted) =>(
+  {
+   type: "DELETE_A_TRACKED_EXCERCISE",
    payload: idToBeDeleted
   }
 )
@@ -152,7 +160,7 @@ export const fetchTrackedExcercises = () =>async (dispatch)=>{
       );
       const receivedData = await response.json();
       const excerciseList = receivedData.excercise
-      dispatch(fetchTrakcedExcerciseList(excerciseList))
+      dispatch(fetchTrackedExcerciseList(excerciseList))
   }
   catch(error){
     console.error("Error", error)
@@ -237,6 +245,32 @@ export const deleteAnExcerciseFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
 
 }
 
+
+
+export const deleteATrackedExcerciseFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
+
+  try{
+   const response = await fetch(`${DELETE_TRACKED_EXCERCISE_URL}/${idOfTheGoalToBeDeleted}`,{
+    method: "DELETE", 
+    headers: {
+      "Content-Type": "application/json", 
+    },
+    
+   })
+   
+   if (response.ok) {
+    const data = await response.json();
+    const deletedGoal = data.deleted
+  } else {
+    console.error("Some Error occured!");
+  }
+   
+  }
+  catch(error){
+   console.error("Error ", error)
+  }
+
+}
 
 export const deleteFoodFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
 

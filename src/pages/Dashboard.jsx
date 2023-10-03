@@ -20,7 +20,7 @@ export default function Dashboard (){
 
     return(
         <div>
-        <h2 className="header">Your Fitness Dashboard</h2>
+        <h2 className="header">Your Home Fitness Dashboard</h2>
         <div className="parent">
         <div className="totalcaloriesbtn">Total Target Calories: {target} Kcal</div>
         <div className="consumedcaloriesbtn">Total Consumed Calories: {consumed} Kcal</div>

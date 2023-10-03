@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Trackers from './pages/Trackers';
 import NavigationBar from './components/NavigationBar';
 import ExcerciseBoard from './pages/ExcerciseBoard';
+import TrackedExcercise from './pages/TrackedExcercise';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/goal' element={<GoalTracking/>}></Route>
         <Route path='/tracker' element={<Trackers/>}/>
         <Route path='/excerciseboard' element={<ExcerciseBoard/>}/>
+        <Route path='/tracked' element={<TrackedExcercise/>}/>
 
         <Route path='/excerciselist' element={<ExcerciseList/>}></Route>
         <Route path='/foodslist' element={<FoodList/>}></Route>

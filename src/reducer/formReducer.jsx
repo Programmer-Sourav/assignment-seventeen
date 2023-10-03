@@ -42,6 +42,8 @@ const formReducer = (state = initialState, action) =>{
     return {...state, goalsList: state.goalsList.filter((goal)=>goal._id!==action.payload)}
     case "DELETE_A_EXCERCISE": 
     return {...state, excerciseList: state.excerciseList.filter((excercise)=>excercise._id!==action.payload)}
+    case "DELETE_A_TRACKED_EXCERCISE": 
+    return {...state, trackedExcercise: state.trackedExcercise.filter((excercise)=>excercise._id!==action.payload)}
     case "DELETE_A_FOOD":
     return {...state, foodList: state.foodList.filter((food)=>food._id!==action.payload)}
     default:

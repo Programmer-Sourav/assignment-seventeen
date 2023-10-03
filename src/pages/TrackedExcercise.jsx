@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchGoals, fetchTrackedExcercises } from "../actionCreators/actions"
-import GoalCard from "../components/GoalCard"
-import ExcerciseCard from "../components/ExcerciseCard"
+import TrackedExcerciseCard from "../components/TrackedExcerciseCard"
+
 
 
 
@@ -16,13 +16,14 @@ export default function TrackedExcercise(){
      dispatch(fetchTrackedExcercises())
     }, [])
 
-    // const totalTargetCalories = trackedState.reduce((acc, goalItem)=>(acc+ goalItem.targetCalories), 0)
-    // localStorage.setItem("targetCalories", totalTargetCalories)  
+    const totalCaloriesBurned = trackedState.reduce((acc, trackedItem)=>(acc+ trackedItem.caloriesBurned), 0)
+    localStorage.setItem("caloriesBurned", totalCaloriesBurned)
+
      return(
          <div>{
              trackedState.map((tracked, index)=>(
                  <ul key={index}> 
-                    <ExcerciseCard excerciseDetails ={tracked} dispatch={dispatch}/>
+                    <TrackedExcerciseCard excerciseDetails ={tracked} dispatch={dispatch}/>
                  </ul>
              ))  
              } </div>

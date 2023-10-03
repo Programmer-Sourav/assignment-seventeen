@@ -20,6 +20,10 @@ export default function Trackers (){
     }
 
     const trackedExcercises = () =>{
+        navigate("/tracked")
+    }
+
+    const allExcercises = () =>{
         navigate("/excerciselist")
     }
 
@@ -41,6 +45,7 @@ export default function Trackers (){
                 <button onClick={()=>{trackedGoals()}} className="goalsbtn">Tracked Goals</button>
                 <button onClick={()=>{addExcercises()}} className="excercisebtn">Add Excercises</button>
                 <button onClick={()=>{trackedExcercises()}} className="excercisebtn">Tracked Excercises</button>
+                <button onClick={()=>{allExcercises()}} className="excercisebtn">All Excercises</button>
                 <button onClick={()=>{addToFoods()}} className="foodsbtn">Add Foods</button>
                 <button onClick={()=>{trackedFoods()}} className="foodsbtn">Tracked Foods</button>
                 </ul>
