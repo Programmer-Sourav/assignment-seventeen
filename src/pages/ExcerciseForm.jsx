@@ -5,6 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { initialState } from "../reducer/formReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { addToExcercise, addToTrackedExcercise, fetchAllExcercises } from "../actionCreators/actions";
+import toast from "react-hot-toast";
 
 
 export default function ExcerciseForm (){
@@ -18,8 +19,13 @@ export default function ExcerciseForm (){
 
    function calculateAutomatic (excerciseName, duration){
       const excercise = excerciseState.find((excercise)=>excercise.excerciseName === excerciseName)
+      let calculated = 0;
+      if(!excercise)
+      toast.error("Oops! Excercise was not found.")
+    else{
       const calories = excercise.categoryInfo.category.categoryCalories
-      const calculated = (calories/excercise.duration)*duration;
+      calculated = (calories/excercise.duration)*duration;
+    }
       return calculated;
    }
    const setDuration = (e, values, setFieldValue) => {

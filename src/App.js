@@ -14,10 +14,12 @@ import Trackers from './pages/Trackers';
 import NavigationBar from './components/NavigationBar';
 import ExcerciseBoard from './pages/ExcerciseBoard';
 import TrackedExcercise from './pages/TrackedExcercise';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div className="App">
+      {<Toaster position="bottom-right" reverseOrder={true} />}
        <NavigationBar/>
        <Routes> 
         <Route path='/' element={<Dashboard/>}/>

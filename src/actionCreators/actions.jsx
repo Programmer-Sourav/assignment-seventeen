@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { ADD_EXCERCISE_URL, ADD_FOOD_URL, ADD_GOAL_URL, ADD_TO_TRACKED_EXCERCISE_URL, DELETE_EXCERCISE_URL, DELETE_FOOD_URL, DELETE_GOAL_URL, DELETE_TRACKED_EXCERCISE_URL, FETCH_ALL_EXCERCISE_URL, FETCH_EXCERCISE_URL, FETCH_FOOD_URL, FETCH_GOAL_URL, FETCH_TRACKED_EXCERCISE_URL } from "../URLs";
 
 export const fetchGoalList = (goalsList) => ({
@@ -67,6 +68,7 @@ export const addToExcercise = (excerciseDetails) =>async() =>{
     const data = await response.json();
     //console.log("Added Excercise ", data)
     const addedExcercise = data.added
+    toast.success("Successfully added to the database!")
   } else {
     console.error("Some Error occured!");
   }
@@ -90,6 +92,7 @@ export const addToFoods = (foodDetails) =>async() =>{
    if (response.ok) {
     const data = await response.json();
     const addedFood = data.added
+    toast.success("Successfully added to the database!")
   } else {
     console.error("Some Error occured!");
   }
@@ -114,6 +117,7 @@ export const addToGoals = (goalDetails) =>async () =>{
   if (response.ok) {
     const data = await response.json();
     const addedGoals = data.added
+    toast.success("Successfully added to the database!")
   } else {
     console.error("Some Error occured!");
   }
@@ -207,6 +211,7 @@ export const deleteAGoalFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
    if (response.ok) {
     const data = await response.json();
     const deletedGoal = data.deleted
+    toast.success("Successfully deleted!")
   } else {
     console.error("Some Error occured!");
   }
@@ -234,6 +239,7 @@ export const deleteAnExcerciseFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
    if (response.ok) {
     const data = await response.json();
     const deletedGoal = data.deleted
+    toast.success("Successfully deleted!")
   } else {
     console.error("Some Error occured!");
   }
@@ -261,6 +267,7 @@ export const deleteATrackedExcerciseFromDB = (idOfTheGoalToBeDeleted) =>async() 
    if (response.ok) {
     const data = await response.json();
     const deletedGoal = data.deleted
+    toast.success("Successfully deleted!")
   } else {
     console.error("Some Error occured!");
   }
@@ -286,6 +293,7 @@ export const deleteFoodFromDB = (idOfTheGoalToBeDeleted) =>async() =>{
    if (response.ok) {
     const data = await response.json();
     const deletedGoal = data.deleted
+    toast.success("Successfully deleted!")
   } else {
     console.error("Some Error occured!");
   }
@@ -312,6 +320,7 @@ export const addToTrackedExcercise = (excerciseDetails) => async() =>{
     const data = await response.json();
     console.log("Added Excercise ", data)
     const addedExcercise = data.added
+    toast.success("Successfully added to the database!")
   } else {
     console.error("Some Error occured!");
   }
