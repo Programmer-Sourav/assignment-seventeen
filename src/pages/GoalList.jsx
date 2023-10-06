@@ -15,9 +15,10 @@ export default function GoalList(){
      dispatch(fetchGoals())
     }, [])
 
-    const goalsData = useSelector((state)=>state.goalsList)
-    const totalTargetCalories = goalsData.reduce((acc, goalItem)=>(acc+ goalItem.targetCalories), 0)
+  
+    const totalTargetCalories = goalsState.reduce((acc, goalItem)=>(acc+ goalItem.targetCalories), 0)
     localStorage.setItem("targetCalories", totalTargetCalories)  
+    
      return(
          <div>{
              goalsState.map((goal, index)=>(

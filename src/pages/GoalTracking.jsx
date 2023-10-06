@@ -15,6 +15,7 @@ export default function GoalTracking (){
             <div className='form-container'>
         <Formik initialValues={initialState.goalDetails} onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500));
+        console.log("Values ", values)
         dispatch(addToGoals(values))
       }}>
             <Form> 

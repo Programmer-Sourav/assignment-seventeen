@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router"
 import "../stylesheets/dashboard.css"
-import { useSelector } from "react-redux"
+
 
 export default function Dashboard (){
 
@@ -15,7 +15,7 @@ export default function Dashboard (){
      const target = localStorage.getItem("targetCalories")
      const burned = localStorage.getItem("caloriesBurned")
      const consumed = localStorage.getItem("caloriesConsumed")
-    const remaining = target-consumed
+     const remaining = target-burned
    
 
     return(

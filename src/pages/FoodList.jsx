@@ -11,8 +11,7 @@ const dispatch = useDispatch()
 useEffect(()=>{dispatch(fetchFoods())},[])
 
 
-const foodsData = useSelector((state)=>state.foodList)
-const totalCaloriesConsumed = foodsData.reduce((acc, calorieItem)=>(acc+ calorieItem.calories),0)
+const totalCaloriesConsumed = foodstate.reduce((acc, calorieItem)=>(acc+ calorieItem.calories),0)
 localStorage.setItem("caloriesConsumed", totalCaloriesConsumed)
 
 
